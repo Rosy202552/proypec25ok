@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Estudiantes</title>
+</head>
+<body>
+    <h1>Estudiantes</h1>
+    <a href="{{ url_for('add') }}">Agregar nuevo</a>
+    <table border="1">
+        <tr>
+            <th>Matrícula</th>
+            <th>Nombre</th>
+            <th>Grupo</th>
+            <th>Acciones</th>
+        </tr>
+        {% for e in estudiantes %}
+        <tr>
+            <td>{{ e.matricula }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.grupo }}</td>
+            <td>
+                <a href="{{ url_for('edit', id=e.id) }}">Editar</a>
+                <a href="{{ url_for('delete', id=e.id) }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

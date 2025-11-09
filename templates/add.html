@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Estudiante</title>
+</head>
+<body>
+    <h1>Agregar Estudiante</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                                {% for category, msg in messages %}
+                                    <li class="{{ 'error' if category == 'error' else 'ok' }}">{{ msg }}</li>
+                                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+                Matrícula: <input type="text" name="matricula" value="{{ matricula|default('') }}" required><br>
+                Nombre: <input type="text" name="nombre" value="{{ nombre|default('') }}" required><br>
+                Grupo: <input type="text" name="grupo" value="{{ grupo|default('') }}" required><br>
+                <button type="submit">Guardar</button>
+        </form>
+    <a href="{{ url_for('index') }}">Volver</a>
+</body>
+</html>
